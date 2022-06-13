@@ -8,4 +8,6 @@ public interface UserService {
     void add(User user);
     List<User> listUsers();
     User getUser(Long id);
+
+    public User getUserByCarDescription(String model, int series);
 }

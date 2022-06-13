@@ -32,6 +32,8 @@ public class MainApp {
 
       users.forEach(System.out::println);
 
+      System.out.println("user by car: " + userService.getUserByCarDescription(car1.getModel(), car1.getSeries()));
+
 
 
       context.close();

@@ -4,15 +4,9 @@
     <facet type="jpa" name="JPA">
       <configuration>
         <setting name="validation-enabled" value="true" />
-        <setting name="provider-name" value="Hibernate" />
-        <datasource-mapping>
-          <factory-entry name="2.2.1. spring_hibernate" />
-        </datasource-mapping>
+        <datasource-mapping />
         <naming-strategy-map />
       </configuration>
-    </facet>
-    <facet type="Spring" name="Spring">
-      <configuration />
     </facet>
   </component>
 </module>
