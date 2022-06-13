@@ -21,21 +21,18 @@ public class MainApp {
       userService.add(new User("User3", "Lastname3", "user3@mail.ru"));
       userService.add(new User("User4", "Lastname4", "user4@mail.ru"));
 
-//      userService.add(new User("User5", "Lastname5", "user5@mail.ru", new Car("ford", 2134)));
-//      userService.add(new User("User6", "Lastname6", "user6@mail.ru", new Car("mazda", 23162)));
       Car car1 = new Car("mazda", 23162);
-      User user5 = new User("User5", "Lastname5", "user5@mail.ru");
-      user5.setCar(car1);
-
+      Car car2 = new Car("ford", 34254);
+      User user5 = new User("User5", "Lastname5", "user5@mail.ru", car1);
       userService.add(user5);
+      userService.add(new User("User6", "Lastname6", "user6@mail.ru", car2));
+
+      System.out.println("User5 from DB: " + userService.getUser(5L));
       List<User> users = userService.listUsers();
-      for (User user : users) {
-         System.out.println("Id = "+user.getId());
-         System.out.println("First Name = "+user.getFirstName());
-         System.out.println("Last Name = "+user.getLastName());
-         System.out.println("Email = "+user.getEmail());
-         System.out.println();
-      }
+
+      users.forEach(System.out::println);
+
+
 
       context.close();
    }

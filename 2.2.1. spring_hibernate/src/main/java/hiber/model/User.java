@@ -31,6 +31,17 @@ public class User {
 
    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, optional = true, fetch = FetchType.LAZY)
    private Car car;
+
+   public void setCar(Car car) {
+      if (car == null) {
+         if (this.car != null) {
+            this.car.setUser(null);
+         }
+      } else {
+         car.setUser(this);
+      }
+      this.car = car;
+   }
    
    public User(String firstName, String lastName, String email) {
       this.firstName = firstName;
@@ -42,16 +53,17 @@ public class User {
       this.firstName = firstName;
       this.lastName = lastName;
       this.email = email;
-      this.car = car;
+      setCar(car);
    }
 
    @Override
    public String toString() {
+      String carDescription = this.car == null ? "no car" : this.car.toString();
       return getClass().getSimpleName() + "(" +
               "id = " + id + ", " +
               "firstName = " + firstName + ", " +
               "lastName = " + lastName + ", " +
-              "email = " + email + ")" +
-              "car = " + car.toString();
+              "email = " + email + ")" + ", " +
+              "car = " + carDescription;
    }
 }
